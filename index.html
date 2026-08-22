@@ -470,6 +470,7 @@ footer {
     </nav>
 
     <button class="menu-btn" id="menu-btn" aria-label="メニュー">☰</button>
+    <button id="theme-btn" class="btn btn-ghost" type="button" aria-label="ダークモードに切り替え">🌙</button>
   </div>
 </header>
 
@@ -733,22 +734,21 @@ document.getElementById("year").textContent = new Date().getFullYear();
    ==================================================================== */
 
 // 【改造ネタ 1】下にスクロールするとヘッダーに影を付ける
-// window.addEventListener("scroll", () => {
-//   const h = document.querySelector("header");
-//   h.style.boxShadow = window.scrollY > 10 ? "0 2px 14px rgba(0,0,0,.07)" : "none";
-// });
+window.addEventListener("scroll", () => {
+  const h = document.querySelector("header");
+  h.style.boxShadow = window.scrollY > 10 ? "0 2px 14px rgba(0,0,0,.07)" : "none";
+});
 
 // 【改造ネタ 2】ダークモードに切り替える
-//   まず body エリアのメニューに次のボタンを足す：
-//   <button id="theme-btn" class="btn btn-ghost">🌙</button>
-// document.getElementById("theme-btn").addEventListener("click", () => {
-//   const r = document.documentElement;
-//   const dark = r.style.getPropertyValue("--bg-color") === "#1b1f24";
-//   r.style.setProperty("--bg-color",   dark ? "#fbfcfc" : "#1b1f24");
-//   r.style.setProperty("--soft-color", dark ? "#f1f7f7" : "#242a31");
-//   r.style.setProperty("--text-color", dark ? "#333c42" : "#e8edf0");
-//   r.style.setProperty("--dark-color", dark ? "#1f2b33" : "#f5f8fa");
-// });
+const themeBtn = document.getElementById("theme-btn");
+themeBtn.addEventListener("click", () => {
+  const root = document.documentElement;
+  const dark = root.style.getPropertyValue("--bg-color") === "#1b1f24";
+  root.style.setProperty("--bg-color", dark ? "#bbf1f1" : "#1b1f24");
+  root.style.setProperty("--soft-color", dark ? "#ddf9f9" : "#242a31");
+  root.style.setProperty("--text-color", dark ? "#35393c" : "#e8edf0");
+  root.style.setProperty("--dark-color", dark ? "#1f2b33" : "#f5f8fa");
+});
 </script>
 
 </body>
